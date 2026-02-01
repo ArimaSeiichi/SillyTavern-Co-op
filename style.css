@@ -1,0 +1,166 @@
+/* Base container for the Vue app */
+#coop-status-app {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* The small circular status indicator */
+.coop-widget {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #4a4a5e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #6c6c8c;
+}
+
+.coop-widget:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.coop-widget .status-icon {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Status-specific colors for the widget border */
+.coop-widget.status-disconnected { border-color: #6c6c8c; }
+.coop-widget.status-connecting { border-color: #facc15; animation: pulse 1.5s infinite; }
+.coop-widget.status-connected { border-color: #4ade80; }
+.coop-widget.status-waiting { border-color: #fb923c; animation: pulse 2s infinite; }
+.coop-widget.status-generating { border-color: #8b5cf6; animation: pulse 1s infinite; }
+
+/* The main panel, hidden by default */
+.coop-panel {
+    position: absolute; /* Changed from fixed to be relative to the app container */
+    bottom: 65px; /* Position above the widget */
+    right: 0;
+    width: 340px;
+    max-height: 70vh;
+    background: rgba(30, 30, 45, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #e0e0e0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: bottom right;
+}
+
+/* Hide/show transition for the panel */
+.coop-panel.hidden {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+.coop-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: grab;
+}
+
+.coop-panel-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.coop-panel-body {
+    flex-grow: 1;
+    padding: 0 16px 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.coop-section {
+    background: rgba(0,0,0,0.1);
+    padding: 12px;
+    border-radius: 8px;
+}
+.coop-section h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #a0a0a0;
+}
+
+/* User List */
+.coop-user-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.coop-user-list li {
+    padding: 4px 0;
+    color: #c0c0c0;
+}
+
+/* Log Box */
+.coop-log-box {
+    height: 120px;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column-reverse; /* Newest logs at the bottom */
+}
+.coop-log-box p {
+    margin: 0 0 4px;
+}
+
+/* Generic button and input styles */
+.coop-btn, .coop-btn-close {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+    background: #6366f1;
+    color: white;
+}
+.coop-btn:hover { background: #4f46e5; }
+
+.coop-btn-close {
+    background: transparent;
+    font-size: 20px;
+    padding: 0 8px;
+}
+.coop-btn-close:hover { background: rgba(255,255,255,0.1); }
+
+.coop-input {
+    width: 100%;
+    padding: 8px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    color: #fff;
+    margin-bottom: 8px;
+    resize: vertical;
+    min-height: 50px;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(192, 192, 224, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(192, 192, 224, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(192, 192, 224, 0); }
+}
