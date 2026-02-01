@@ -1,0 +1,16 @@
+{
+  "name": "SillyTavern-Coop",
+  "url": "https://github.com/ArimaSeiichi/SillyTavern-Co-op",
+  "author": "Kilo Code",
+  "version": "0.0.1",
+  "description": "A real-time co-op extension for SillyTavern.",
+  "tags": ["multiplayer", "co-op"],
+  "files": {
+    "config.yaml": "https://raw.githubusercontent.com/ArimaSeiichi/SillyTavern-Co-op/main/config.yaml",
+    "index.html": "https://raw.githubusercontent.com/ArimaSeiichi/SillyTavern-Co-op/main/index.html",
+    "style.css": "https://raw.githubusercontent.com/ArimaSeiichi/SillyTavern-Co-op/main/style.css",
+    "script.js": "https://raw.githubusercontent.com/ArimaSeiichi/SillyTavern-Co-op/main/script.js",
+    "ui.js": "https://raw.githubusercontent.com/ArimaSeiichi/SillyTavern-Co-op/main/ui.js",
+    "README.md": "https://raw.githubusercontent.com/ArimaSeiichi/SillyTavern-Co-op/main/README.md"
+  }
+}
